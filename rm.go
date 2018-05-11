@@ -21,7 +21,7 @@ func doObliterate(ctx context.Context, stream *btrdb.Stream) {
 	os.Exit(0)
 }
 
-func remove(endpoint string, streamUuid string, confirmed bool) {
+func remove(endpoint string, streamUUID string, confirmed bool) {
 	ctx := context.Background()
 	conn, err := btrdb.Connect(ctx, endpoint)
 	if err != nil {
@@ -29,7 +29,7 @@ func remove(endpoint string, streamUuid string, confirmed bool) {
 		os.Exit(1)
 	}
 
-	parsed := uuid.Parse(streamUuid)
+	parsed := uuid.Parse(streamUUID)
 	stream := conn.StreamFromUUID(parsed)
 	exists, err := stream.Exists(ctx)
 	if err != nil {
@@ -37,7 +37,7 @@ func remove(endpoint string, streamUuid string, confirmed bool) {
 		os.Exit(1)
 	}
 	if !exists {
-		fmt.Printf("Stream %v not found.\n", streamUuid)
+		fmt.Printf("Stream %v not found.\n", streamUUID)
 		os.Exit(1)
 	}
 
@@ -53,7 +53,7 @@ func remove(endpoint string, streamUuid string, confirmed bool) {
 
 	var response string
 	for {
-		fmt.Printf("Are you sure you want to delete stream %v from collection %v? [y/n] ", streamUuid, collection)
+		fmt.Printf("Are you sure you want to delete stream %v from collection %v? [y/n] ", streamUUID, collection)
 		_, err := fmt.Scanln(&response)
 		if err != nil {
 			fmt.Print("There was a problem getting a response. Are you sure you want to delete? [y/n]")
