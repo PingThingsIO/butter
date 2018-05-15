@@ -39,7 +39,7 @@ Run 'butter COMMAND --help' for more information on a command.
 ### Copy
 
 The `cp` subcommand will copy streams from one BTrDB server to another. It is
-essentially a fork of (btrdbcp)[https://github.com/BTrDB/smartgridstore/tree/master/tools/btrdbcp].
+essentially a fork of [btrdbcp](https://github.com/BTrDB/smartgridstore/tree/master/tools/btrdbcp).
 
 Here's the usage text:
 ```
