@@ -102,7 +102,7 @@ Arguments:
   PREFIX       A prefix to filter collections.
 ```
 
-It's output looks like this:
+Its output looks like this:
 
 ```
 Collection name                      Stream count
