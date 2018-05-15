@@ -15,8 +15,9 @@ go install
 
 ## Usage
 
-Butter currently has 4 sub commands: `cp`, `ls`, `rm`, and `tail`. You can read
-about them in this README, or run `butter -h` for a help page:
+Butter currently has 4 subcommands: [`cp`](#copy), [`ls`](#list), [`rm`](#remove), 
+and [`tail`](#tail). You can read about them in this README, or run `butter -h`
+for a help page:
 ```
 $ butter -h
 
@@ -164,5 +165,43 @@ butter rm b66fa23a-4abd-53b7-99f9-651f5f2fa3b1
 This will prompt for confirmation:
 
 ```
-Are you sure you want to delete stream b66fa23a-4abd-53b7-99f9-651f5f2fa3b1 from collection pingthingsio/90807? [y/n]
+Are you sure you want to delete stream b66fa23a-4abd-53b7-99f9-651f5f2fa3b1 
+from collection pingthingsio/90807? [y/n]
 ```
+
+
+### Tail
+
+The `tail` subcommand lets you see the most recent values inserted into a
+BTrDB stream.
+
+Here's the usage:
+```
+$ butter tail -h
+
+Usage: butter tail [-fl] [ENDPOINT] UUID
+
+Prints the latest values inserted into BTrDB
+
+Arguments:
+  ENDPOINT       The BTrDB endpoint to print (default "localhost:4410")
+  UUID           UUID of the stream to print from
+
+Options:
+  -f, --follow   Output values as they are added to the stream
+  -l, --last     Duration decribing how far back to print (i.e. last 5m) (default 1s)
+```
+
+If you wanted to check if any data is currently being inserted into a stream 
+you could run:
+```
+butter tail -f b66fa23a-4abd-53b7-99f9-651f5f2fa3b1
+```
+
+If you wanted to check if any data had been inserted in the last 10 minutes,
+you could run (valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h"):
+```
+butter tail -l 10m b66fa23a-4abd-53b7-99f9-651f5f2fa3b1
+```
+
+
