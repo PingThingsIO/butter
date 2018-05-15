@@ -90,7 +90,7 @@ Explanation of the example:
 
 The `ls` subcommand will list collections of a BTrDB server.
 
-Here's it's usage:
+Here's its usage:
 ```
 Usage: butter ls [ENDPOINT] [PREFIX]
 
